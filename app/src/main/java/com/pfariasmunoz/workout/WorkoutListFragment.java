@@ -1,13 +1,22 @@
 package com.pfariasmunoz.workout;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class WorkoutListFragment extends ListFragment {
+
+    static interface WorkoutListListener {
+        void itemClicked(long id);
+
+    };
+    // add the listener to the fragment
+    private WorkoutListListener listener;
 
 
     @Override
@@ -27,5 +36,22 @@ public class WorkoutListFragment extends ListFragment {
 
         // calling the superclass onCreateView() method give the default layout for the ListFragment
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+
+    // this is called when the fragment gets attach to the activity (context)
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.listener = (WorkoutListListener)context;
+    }
+
+    // Tell the listener when an item in the ListView is clicked
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        if (listener != null) {
+            listener.itemClicked(id);
+        }
     }
 }
