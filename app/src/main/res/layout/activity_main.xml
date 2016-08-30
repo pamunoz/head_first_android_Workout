@@ -16,9 +16,8 @@
 
 
     <!--Then displays the workout details-->
-    <fragment
-        class="com.pfariasmunoz.workout.WorkoutDetailFragment"
-        android:id="@+id/detail_frag"
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="0dp"
         android:layout_weight="3"
         android:layout_height="match_parent"/>
