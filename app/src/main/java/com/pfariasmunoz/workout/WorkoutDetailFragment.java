@@ -21,6 +21,9 @@ public class WorkoutDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            workoutId = savedInstanceState.getLong("workoutId");
+        }
         // Inflate the layout for this fragment
         // This tells Android which layout the fragment uses
         // (in this case, it's fragment_workout_detail)
@@ -41,6 +44,11 @@ public class WorkoutDetailFragment extends Fragment {
             title.setText(workout.getName());
             description.setText(workout.getDescription());
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle saveInstanceState) {
+        saveInstanceState.putLong("workoutId", workoutId);
     }
 
     public void setWorkout(long id) {
