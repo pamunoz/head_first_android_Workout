@@ -1,12 +1,6 @@
 package com.pfariasmunoz.workout;
 
-/**
- * Created by Pablo Farias on 28-08-16.
- */
 public class Workout {
-    private String name;
-    private String description;
-
     public static final Workout[] workouts = {
             new Workout("The Limb Loosener",
                     "5 Handstand push-ups\n10 1-legged squats\n15 Pull-ups"),
@@ -15,6 +9,8 @@ public class Workout {
             new Workout("Strength and Length",
                     "500 meter run\n21 x 1.5 pood kettleball swing\n21 x pull-ups")
     };
+    private String name;
+    private String description;
 
     // Each Workout has a name and description
     private Workout(String name, String description) {
