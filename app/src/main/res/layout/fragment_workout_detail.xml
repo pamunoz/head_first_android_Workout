@@ -7,16 +7,21 @@
     tools:context=".WorkoutDetailFragment">
 
     <TextView
+        android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=""
-        android:id="@+id/textTitle"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
+        android:id="@+id/textDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/textDescription"/>
+        android:text=""/>
+    <!-- this framelayout is needed to add the stopwatch fragment to this fragment  -->
+    <FrameLayout
+        android:id="@+id/stopwatch_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -1,8 +1,9 @@
 package com.pfariasmunoz.workout;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,15 @@ public class WorkoutDetailFragment extends Fragment {
         if (savedInstanceState != null) {
             workoutId = savedInstanceState.getLong("workoutId");
         }
+        // Start the transaction
+        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+        StopwatchFragment stopwatchFragment = new StopwatchFragment();
+        // Replace the fragment in the frame layout
+        ft.replace(R.id.stopwatch_container, stopwatchFragment);
+        // Add the transaction to the back stack
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
         // Inflate the layout for this fragment
         // This tells Android which layout the fragment uses
         // (in this case, it's fragment_workout_detail)
