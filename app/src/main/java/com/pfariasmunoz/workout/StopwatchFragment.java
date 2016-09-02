@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class StopwatchFragment extends Fragment {
+public class StopwatchFragment extends Fragment implements View.OnClickListener {
     // Number of seconds dispplayed on the stopwatch.
     private int seconds = 0;// the number of seconds that have passed
     // Is the stopwatch running?
@@ -112,5 +112,20 @@ public class StopwatchFragment extends Fragment {
                 handler.postDelayed(this, 1000);
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {     // Checks which view was clicked
+            case R.id.start_button: 
+                onClickStart(view);
+                break;
+            case R.id.stop_button:
+                onClickStop(view);
+                break;
+            case R.id.reset_button:
+                onClickReset(view);
+                break;
+        }
     }
 }
