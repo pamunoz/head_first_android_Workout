@@ -111,6 +111,6 @@ public class StopwatchFragment extends Fragment {
                 // run the handler code every seconds
                 handler.postDelayed(this, 1000);
             }
-        })
+        });
     }
 }
