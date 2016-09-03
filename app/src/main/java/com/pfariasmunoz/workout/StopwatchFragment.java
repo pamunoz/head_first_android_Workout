@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class StopwatchFragment extends Fragment implements View.OnClickListener {
@@ -38,6 +39,12 @@ public class StopwatchFragment extends Fragment implements View.OnClickListener 
         // Set the fragment's layout and start the runTimer() method passing in the layout
         View layout = inflater.inflate(R.layout.fragment_stopwatch, container, false);
         runTimer(layout);
+        Button startButton = (Button) layout.findViewById(R.id.start_button);
+        startButton.setOnClickListener(this);
+        Button stopButton = (Button) layout.findViewById(R.id.stop_button);
+        stopButton.setOnClickListener(this);
+        Button resetButton = (Button) layout.findViewById(R.id.reset_button);
+        resetButton.setOnClickListener(this);
         return layout;
     }
 
@@ -71,6 +78,8 @@ public class StopwatchFragment extends Fragment implements View.OnClickListener 
         savedInstanceState.putBoolean("wasRunning", wasRunning);
 
     }
+
+    
 
     public void onClickStart(View view) {
         // the code needs to run when the user
@@ -117,7 +126,7 @@ public class StopwatchFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {     // Checks which view was clicked
-            case R.id.start_button: 
+            case R.id.start_button:
                 onClickStart(view);
                 break;
             case R.id.stop_button:
