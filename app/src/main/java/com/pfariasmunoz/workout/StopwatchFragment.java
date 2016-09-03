@@ -79,7 +79,7 @@ public class StopwatchFragment extends Fragment implements View.OnClickListener 
 
     }
 
-    
+
 
     public void onClickStart(View view) {
         // the code needs to run when the user

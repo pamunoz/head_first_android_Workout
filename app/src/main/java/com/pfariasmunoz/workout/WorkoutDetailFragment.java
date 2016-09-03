@@ -24,16 +24,18 @@ public class WorkoutDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             workoutId = savedInstanceState.getLong("workoutId");
+        } else {   // the transaction will only run is the saveInstanceState is null
+            // Start the transaction
+            FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+            StopwatchFragment stopwatchFragment = new StopwatchFragment();
+            // Replace the fragment in the frame layout
+            ft.replace(R.id.stopwatch_container, stopwatchFragment);
+            // Add the transaction to the back stack
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
         }
-        // Start the transaction
-        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
-        StopwatchFragment stopwatchFragment = new StopwatchFragment();
-        // Replace the fragment in the frame layout
-        ft.replace(R.id.stopwatch_container, stopwatchFragment);
-        // Add the transaction to the back stack
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
+
         // Inflate the layout for this fragment
         // This tells Android which layout the fragment uses
         // (in this case, it's fragment_workout_detail)
